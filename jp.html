@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jump Scare</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        iframe {
+            display: none;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        a {
+            color: white;
+            font-size: 1.5em;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" id="jump-scare-link">লিংকে ক্লিক করুন</a>
+    
+    <!-- YouTube video embedded with autoplay and fullscreen enabled -->
+    <iframe id="scare-video" 
+            src="https://www.youtube.com/embed/YFp8MjrfshU?autoplay=1&fs=1&modestbranding=1&controls=0&rel=0" 
+            allow="autoplay; fullscreen" 
+            allowfullscreen></iframe>
+    
+    <script>
+        function goFullscreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }
+        }
+
+        function showJumpScare() {
+            const scareVideo = document.getElementById('scare-video');
+
+            // Hide the link
+            document.getElementById('jump-scare-link').style.display = 'none';
+
+            // Show the video
+            scareVideo.style.display = 'block';
+
+            // Make the page fullscreen
+            goFullscreen();
+        }
+
+        // Trigger the jump scare when the link is clicked
+        document.getElementById('jump-scare-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            showJumpScare();
+        });
+    </script>
+</body>
+</html>
